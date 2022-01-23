@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-xl navbar-light bg-white shadow-0 border-bottom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"><i class="fas fa-globe-europe mx-1"></i>MathFlare Encyclopedia</a>
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbar">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/search" class="nav-link"><i class="fas fa-search"></i> Search</a>
+                </li>
+                <li class="nav-item dropdown d-none d-lg-block">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-mdb-toggle="dropdown">
+                        <i class="far fa-comment-alt"></i> Topics
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="/topic/mathematics"><i class="fas fa-square-root-alt"></i>
+                                Mathematics</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/topic/biology"><i class="fas fa-dna"></i>
+                                Biology</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/topic/chemistry"><i class="fas fa-flask"></i>
+                                Chemistry</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/topic/physics"><i class="fas fa-apple-alt"></i>
+                                Physics</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/topic/computer_science"><i class="fas fa-network-wired"></i>
+                                Computer
+                                Science</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/topic/economics"><i class="far fa-money-bill-alt"></i>
+                                Economics</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/topic/medecin"><i class="fas fa-stethoscope"></i>
+                                Medecin</a>
+                        </li>
+                    </ul>
+                </li>
+                <div class="d-lg-none">
+                    <li class="nav-item">
+                        <strong class="navbar-text mb-0"><i class="far fa-comment-alt"></i> Topics:</strong>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/topic/mathematics"><i class="fas fa-square-root-alt"></i>
+                            Mathematics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/topic/biology"><i class="fas fa-dna"></i> Biology</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/topic/chemistry"><i class="fas fa-flask"></i>
+                            Chemistry</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/topic/physics"><i class="fas fa-apple-alt"></i>
+                            Physics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/topic/computer_science"><i class="fas fa-network-wired"></i>
+                            Computer
+                            Science</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/topic/economics"><i class="far fa-money-bill-alt"></i>
+                            Economics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/topic/medecin"><i class="fas fa-stethoscope"></i>
+                            Medecin</a>
+                    </li>
+                </div>
+            </ul>
+            <d class="d-flex">
+                <form action="/search" method="" class="w-auto mr-2">
+                    <div class="input-group">
+                        <span class="input-group-text" id="search-addon">
+                            <i class="fas fa-search"></i>
+                        </span>
+                        <input type="search" name="searchTerm" class="form-control"
+                            placeholder="Search articles or users" required />
+                        <button class="btn btn-outline-secondary border-1" type="submit"
+                            data-mdb-ripple-color="secondary">
+                            Search
+                        </button>
+                    </div>
+                </form>
+                <% if (locals.isLoggedIn) { %>
+                    <%- include('NavUser') %>
+                        <% } else { %>
+                            <%- include('NavDefault') %>
+                                <% } %>
+            </d>
+        </div>
+    </div>
+</nav>

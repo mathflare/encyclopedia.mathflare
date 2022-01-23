@@ -1,0 +1,23 @@
+<div class="container mb-3">
+    <div style="max-width: 550px; margin: auto">
+        <h1 class="display-4 mb-3 text-center"><i class="fas fa-sign-in-alt"></i> Log In</h1>
+        <%- include('components/message') %>
+            <form action="/login" method="POST">
+                <div class="form-outline mb-4">
+                    <input type="email" name="email" id="email" class="form-control" required />
+                    <label class="form-label" for="email">Email address</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="password" name="password" id="pass" class="form-control" required />
+                    <label class="form-label" for="pass">Password</label>
+                </div>
+                <button type="submit" class="btn btn-secondary btn-block"><i class="fas fa-sign-in-alt"></i> Log
+                    In</button>
+                <div class="row my-2">
+                    <div class="col">
+                        <a href="/signup">Sign Up</a>
+                    </div>
+                </div>
+            </form>
+    </div>
+</div>

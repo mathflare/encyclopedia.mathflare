@@ -1,0 +1,50 @@
+<div class="container mb-3">
+    <article>
+        <header>
+            <h1 class="display-4 header mb-0">
+                <%= locals.article.title %>
+            </h1>
+        </header>
+        <address>
+            <small class="lead">By <% locals.article.contributors.forEach(contributor=> { %>
+                    <a href="/user/<%= contributor.username %>" class="link-secondary" rel="author">
+                        <%= contributor.name %>,
+                    </a>
+                    <% }); %>
+                        &#8226; <time>
+                            <%= locals.article.created_at.getDate() + '/' + (locals.article.created_at.getMonth() + 1)
+                                + '/' + locals.article.created_at.getFullYear() %>
+                        </time></small>
+        </address>
+        <hr />
+        <section>
+            <%- locals.article.content %>
+        </section>
+    </article>
+    <hr />
+    <aside>
+        <div class="row">
+            <div class="col-md">
+                <h4 class="display-7"><i class="fas fa-paperclip"></i> References</h4>
+                <ul>
+                    <li><a href="/link?url=https://www.google.com" class="link-secondary">stalin <i
+                                class="fas fa-external-link-alt"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-md">
+                <h4 class="display-7"><i class="fas fa-code"></i> Sources</h4>
+                <ul>
+                    <li><a href="/link?url=https://www.google.com" class="link-secondary">lenin <i
+                                class="fas fa-external-link-alt"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-md">
+                <h4 class="display-7"><i class="fas fa-link"></i> External Links</h4>
+                <ul>
+                    <li><a href="/link?url=https://www.google.com" class="link-secondary">churchill <i
+                                class="fas fa-external-link-alt"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+</div>

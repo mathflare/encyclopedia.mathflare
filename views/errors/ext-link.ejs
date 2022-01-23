@@ -1,0 +1,9 @@
+<div class="container">
+    <h1 class="display-1"><i class="fas fa-exclamation-triangle"></i> Attention</h1>
+    <p class="lead">This is an external link. Are you sure you want to navigate to <i>
+            <%= locals.url %>
+        </i> ?</p>
+    <p class="lead">
+        <a href="<%= locals.url %>" class="btn btn-success"><i class="far fa-check-circle"></i> Yes</a>
+        <button onclick="history.back()" class="btn btn-danger"><i class="far fa-times-circle"></i> No</button>
+</div>

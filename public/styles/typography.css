@@ -1,0 +1,22 @@
+h1.header {
+  font-family: "PT Serif Caption", serif;
+}
+
+.navbar-brand {
+  font-family: "PT Serif Caption", serif;
+}
+
+.font-serif {
+  font-family: "PT Serif Caption", serif;
+}
+
+a.link {
+  text-decoration: none;
+  color: hsl(217, 86%, 41%);
+  transition: all 0.1s ease-in-out;
+}
+
+a.link:hover {
+  text-decoration: underline;
+  color: hsl(217, 86%, 31%);
+}

@@ -1,0 +1,50 @@
+<div class="container mb-3">
+    <div class="d-flex">
+        <img src="images/profile/<%= locals.avatar %>" alt="<%= locals.name %>'s profile picture" width="240em"
+            class="rounded-6 border-1 mr-4" style="float: left">
+        <div>
+            <h1 class="display-6">
+                <%= locals.name %>
+            </h1>
+            <p class="lead m-0"><i class="fas fa-at"></i>
+                <%= locals.userName %>
+            </p>
+            <p class="lead mb-2"><i class="fas fa-birthday-cake"></i>
+                <%= locals.joined.getDate() + '/' + (locals.joined.getMonth() + 1) + '/' + locals.joined.getFullYear()
+                    %>
+            </p>
+            <% if (locals.isAccountOwner) { %>
+                <a href="/user/edit" class="btn btn-outline-secondary" data-mdb-ripple-color="secondary"><i
+                        class="fas fa-user-edit"></i> Edit
+                    Profile</a>
+                <% } %>
+        </div>
+    </div>
+    <br />
+    <h2 class="display-7"><i class="fas fa-portrait"></i> Bio:</h2>
+    <% if (locals.bio.length> 0) { %>
+        <p>
+            <%= locals.bio %>
+        </p>
+        <% } else { %>
+            <p>
+                Apparently, <%= locals.name %> prefers to maintain an air of mystery about them...
+            </p>
+            <% } %>
+                <br />
+                <h2 class="display-7"><i class="far fa-file-alt"></i> Articles:</h2>
+                <% if (locals.articles.length> 0) { %>
+                    <ul class="p-0" style="list-style: inside;">
+                        <% locals.articles.forEach(article=> { %>
+                            <li>
+                                <a href="/article/<%= article.title %>">
+                                    <%= article.title %>
+                                </a>
+                                <% }); %>
+                    </ul>
+                    <% } else { %>
+                        <p>
+                            <%= locals.name %> hasn't contributed to any articles
+                        </p>
+                        <% } %>
+</div>

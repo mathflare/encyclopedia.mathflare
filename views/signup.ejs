@@ -1,0 +1,76 @@
+<div class="container mb-3">
+    <h1 class="display-4 mb-3"><i class="fas fa-user-plus"></i> Sign Up</h1>
+    <%- include('./components/message') %>
+        <form action="/signup" method="POST">
+            <div class="form-outline mb-3">
+                <input type="text" name="name" id="name" class="form-control" value="<%= locals.name || '' %>"
+                    required />
+                <label class="form-label" for="name">Name</label>
+            </div>
+            <div class="form-outline mb-3">
+                <input type="email" name="email" id="email" class="form-control" value="<%= locals.email || '' %>"
+                    required />
+                <label class="form-label" for="email">Email address</label>
+            </div>
+            <div class="form-outline mb-3">
+                <input type="text" name="username" id="username" class="form-control"
+                    value="<%= locals.username || '' %>" required />
+                <label class="form-label" for="username">Username</label>
+            </div>
+            <div class="form-outline mb-3">
+                <input type="password" name="password" id="pass" class="form-control"
+                    value="<%= locals.password || '' %>" required />
+                <label class="form-label" for="pass">Password</label>
+            </div>
+            <div class="form-outline mb-2">
+                <input type="password" name="repeatPassword" id="rpass" class="form-control"
+                    value="<%= locals.repeatPassword || '' %>" required />
+                <label class="form-label" for="rpass">Repeat password</label>
+            </div>
+            <div class="mb-3">
+                <p class="m-0">Avatar color</p>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="profileColor" id="randomRadio" value="random"
+                        checked required />
+                    <label class="form-check-label" for="randomRadio"><i class="fas fa-dice"></i> Random</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="profileColor" id="blackRadio" value="black"
+                        required />
+                    <label class="form-check-label" for="blackRadio">Black</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="profileColor" id="blueRadio" value="blue"
+                        required />
+                    <label class="form-check-label" for="inlineRadio2">Blue</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="profileColor" id="greenRadio" value="green"
+                        required />
+                    <label class="form-check-label" for="greenRadio">Green</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="profileColor" id="redRadio" value="red"
+                        required />
+                    <label class="form-check-label" for="redRadio">Red</label>
+                </div>
+                <div class="form-check form-check-inline" data-mdb-toggle="tooltip" title="Editor's choice">
+                    <input class="form-check-input" type="radio" name="profileColor" id="violetRadio" value="violet"
+                        required />
+                    <label class="form-check-label" for="violetRadio">Violet</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="profileColor" id="orangeRadio" value="orange"
+                        required />
+                    <label class="form-check-label" for="orangeRadio">Orange</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-secondary btn-block"><i class="fas fa-user-plus"></i> Sign
+                Up</button>
+            <div class="row my-2">
+                <div class="col">
+                    <a href="/login">Log In</a>
+                </div>
+            </div>
+        </form>
+</div>

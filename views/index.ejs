@@ -1,0 +1,45 @@
+<div class="container py-5">
+    <h1 class="display-1 font-serif mb-0"><i class="fas fa-globe-europe"></i> MathFlare Encyclopedia</h1>
+    <p class="lead"><i class="fas fa-arrow-right"></i> the modern encyclopedia designed for students</p>
+    <hr />
+    <% if (!locals.isLoggedIn) { %>
+        <div class="row">
+            <div class="col-md">
+                <ul class="p-0 fs-4 mb-3 mb-md-0" style="list-style: inside none;">
+                    <li><i class="far fa-check-square text-secondary"></i> 100% Free</li>
+                    <li><i class="far fa-check-square text-secondary"></i> No Ads</li>
+                    <li><i class="far fa-check-square text-secondary"></i> Open Source</li>
+                    <li><i class="far fa-check-square text-secondary"></i> Modern</li>
+                    <li><i class="far fa-check-square text-secondary"></i> Easy to Use</li>
+                    <li><i class="far fa-check-square text-secondary"></i> Designed for Students</li>
+                </ul>
+            </div>
+            <div class="col-md d-flex gap-1 flex-column justify-content-center">
+                <a href="/signup" class="btn btn-secondary fs-6 w-100"><i class="fas fa-user-plus"></i> Sign
+                    Up</a>
+                <a href="/login" class="btn btn-outline-secondary fs-6 w-100" data-mdb-ripple-color="secondary"><i
+                        class="fas fa-sign-in-alt"></i> Log
+                    In</a>
+            </div>
+        </div>
+        <% } else { %>
+            <div class="d-flex justify-content-between">
+                <a href="/user/<%= locals.username %>" class="btn btn-success w-100"><i class="fas fa-user"></i> Profile</a>
+                <a href="/logout" class="btn btn-danger mx-3 w-100"><i class="fas fa-door-open"></i> Log Out</a>
+                <a href="/article/new" class="btn btn-secondary w-100"><i class="fas fa-file-alt"></i> Write an article</a>
+            </div>
+            <% } %>
+                <hr />
+                <div class="row text-center">
+                    <div class="col-md">
+                        <p>&copy;2022 <a href="https://www.mathflare.xyz" target="_blank"
+                                class="link-secondary">MathFlare.xyz</a> •
+                            a <a href="https://beaverops.dkatsios.ml" target="_blank"
+                                class="link-secondary">Beaverops&#8482;</a>
+                            company</p>
+                    </div>
+                    <div class="col-md">
+                        <p>created with &#10084; by cat people in &#127468;&#127479;</p>
+                    </div>
+                </div>
+</div>

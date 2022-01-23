@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="js/main.js" async></script>
+    <link rel="icon" href="assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/icons/apple.png">
+    <link rel="icon" type="image/png" href="assets/icons/512.png" sizes="512x512" />
+    <link rel="icon" type="image/png" href="assets/icons/32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/icons/16.png" sizes="16x16" />
+    <meta name="keywords" content="ehaircut, haircut, book haircut, book haircut online, kourema, kleise kourema">
+    <meta name="description" content="The best place to book and pay for haircuts online." />
+    <meta name="author" content="Beaverops" />
+    <meta name="og:url" content="https://ehaircut.herokuapp.com/" />
+    <meta name="og:title" content="<%= locals.docTitle %>" />
+    <meta name="og:description" content="The best place to book and pay for haircuts online." />
+    <meta name="og:image" content="assets/logo.png" />
+    <meta name="og:locale" content="en_US" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="<%= locals.docTitle %>" />
+    <meta name="twitter:description" content="The best place to book and pay for haircuts online." />
+    <meta name="twitter:image" content="assets/logo.png">
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <link rel="canonical" href="https://ehaircut.herokuapp.com">
+    <link rel="home" href="https://ehaircut.herokuapp.com/">
+    <meta name="theme-color" content="#93a9d2">
+    <title>
+        MathFlare Encyclopedia • <%= locals.docTitle %>
+    </title>
+</head>
+
+<body>
+    <%- include('../components/navbar') %>
+        <%- body %>
+</body>
+
+</html>

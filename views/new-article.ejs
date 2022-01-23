@@ -1,0 +1,54 @@
+<link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+<div class="my-3 px-3">
+    <h1 class="display-6"><i class="fas fa-file-alt"></i> New Article</h1>
+    <div class="d-flex justify-content-between mt-4">
+        <div class="form-outline">
+            <input type="text" id="new-article-title" class="form-control w-100" />
+            <label class="form-label" for="new-article-title">Title</label>
+        </div>
+        <div>
+            <button class="btn btn-success" id="submit-btn"><i class="far fa-check-circle"></i> Publish</button>
+            <a href="/" class="btn btn-danger" id="submit-btn" data-mdb-toggle="tooltip"
+                title="Warning! This action is irreversible"><i class="far fa-times-circle"></i> Discard</a>
+        </div>
+    </div>
+</div>
+<div id="editor">
+    <p>Hello World!</p>
+    <p>you can now <strong>start</strong> <u>writing</u> your <i>article</i>.</p>
+    <p>Feel free to <span style="color: blue">style</span> your text accordingly.</p>
+</div>
+
+<script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js"
+    integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    const quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                [{ 'header': [1, 2, false] }],
+                ['bold', 'italic', 'underline',],
+                ['blockquote', 'formula'],
+                [{ 'script': 'sub' }, { 'script': 'super' }],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                ['clean']
+            ]
+        },
+    });
+
+    document.querySelector('#submit-btn').addEventListener('click', () => {
+        const title = document.querySelector('#new-article-title').value;
+        const content = quill.root.innerHTML;
+        try {
+            axios.post('/article/new', {
+                title,
+                content
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    });
+</script>
