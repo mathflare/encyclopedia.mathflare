@@ -19,3 +19,7 @@ body {
 .ql-editor {
   border: none !important;
 }
+
+select.form-control {
+  cursor: pointer;
+}

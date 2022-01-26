@@ -2,43 +2,56 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const User = require('../models/User');
+const Topic = require('../models/Topic');
 const { ensureAuthenticated } = require('../ensureAuthenticated');
 const router = express.Router();
 router.use(express.static('public'));
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+    const topics = await Topic.find({});
     res.render('index', {
         docTitle: 'Home',
         isLoggedIn: req.isAuthenticated(),
         username: req.isAuthenticated() ? req.user.username : '',
+        topics,
     });
 });
 
-router.get('/signup', (req, res) => {
+router.get('/signup', async (req, res) => {
+    const topics = await Topic.find({});
     if (req.isAuthenticated()) {
         res.redirect('/');
     } else {
         res.render('signup', {
-            docTitle: 'Sign Up'
+            docTitle: 'Sign Up',
+            isLoggedIn: req.isAuthenticated(),
+            username: req.isAuthenticated() ? req.user.username : '',
+            topics,
         });
     }
 });
 
-router.get('/login', (req, res) => {
+router.get('/login', async (req, res) => {
+    const topics = await Topic.find({});
     if (req.isAuthenticated()) {
         res.redirect('/');
     } else {
         res.render('login', {
-            docTitle: 'Log In'
+            docTitle: 'Log In',
+            isLoggedIn: req.isAuthenticated(),
+            username: req.isAuthenticated() ? req.user.username : '',
+            topics,
         });
     }
 });
 
-router.get('/search', (req, res) => {
+router.get('/search', async (req, res) => {
+    const topics = await Topic.find({});
     res.render('search', {
         docTitle: 'Search',
         isLoggedIn: req.isAuthenticated(),
         username: req.isAuthenticated() ? req.user.username : '',
+        topics,
     });
 });
 

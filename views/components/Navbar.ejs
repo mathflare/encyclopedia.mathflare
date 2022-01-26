@@ -17,69 +17,28 @@
                         <i class="far fa-comment-alt"></i> Topics
                     </a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a class="dropdown-item" href="/topic/mathematics"><i class="fas fa-square-root-alt"></i>
-                                Mathematics</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/topic/biology"><i class="fas fa-dna"></i>
-                                Biology</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/topic/chemistry"><i class="fas fa-flask"></i>
-                                Chemistry</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/topic/physics"><i class="fas fa-apple-alt"></i>
-                                Physics</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/topic/computer_science"><i class="fas fa-network-wired"></i>
-                                Computer
-                                Science</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/topic/economics"><i class="far fa-money-bill-alt"></i>
-                                Economics</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/topic/medecin"><i class="fas fa-stethoscope"></i>
-                                Medecin</a>
-                        </li>
+                        <% locals.topics.forEach(topic=> { %>
+                            <li>
+                                <a href="/topic/<%= topic.title %>" class="dropdown-item">
+                                    <i class="<%= topic.icon %>"></i>
+                                    <%= topic.title %>
+                                </a>
+                            </li>
+                            <% }) %>
                     </ul>
                 </li>
                 <div class="d-lg-none">
                     <li class="nav-item">
                         <strong class="navbar-text mb-0"><i class="far fa-comment-alt"></i> Topics:</strong>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/topic/mathematics"><i class="fas fa-square-root-alt"></i>
-                            Mathematics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/topic/biology"><i class="fas fa-dna"></i> Biology</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/topic/chemistry"><i class="fas fa-flask"></i>
-                            Chemistry</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/topic/physics"><i class="fas fa-apple-alt"></i>
-                            Physics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/topic/computer_science"><i class="fas fa-network-wired"></i>
-                            Computer
-                            Science</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/topic/economics"><i class="far fa-money-bill-alt"></i>
-                            Economics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/topic/medecin"><i class="fas fa-stethoscope"></i>
-                            Medecin</a>
-                    </li>
+                    <% locals.topics.forEach(topic=> { %>
+                        <li class="nav-item">
+                            <a href="/topic/<%= topic.title %>" class="nav-link">
+                                <i class="<%= topic.icon %>"></i>
+                                <%= topic.title %>
+                            </a>
+                        </li>
+                        <% }) %>
                 </div>
             </ul>
             <d class="d-flex">

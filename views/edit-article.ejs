@@ -1,0 +1,71 @@
+<link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+<div class="my-3 px-3">
+    <h1 class="display-6"><i class="fas fa-edit"></i> Editing Article <i>"<%= locals.article.title %>"</i></h1>
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <i class="lead m-0">the title or topic cannot be modified.</i>
+        <div>
+            <button class="btn btn-success" id="submit-btn"><i class="far fa-check-circle"></i> Publish Changes</button>
+            <button class="btn btn-danger" data-mdb-toggle="modal" data-mdb-target="#discardModal"><i
+                    class="far fa-times-circle"></i> Discard Changes</button>
+        </div>
+    </div>
+</div>
+<div id="editor">
+    <%- locals.article.content %>
+</div>
+
+<div class="modal fade" id="discardModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to discard your changes?</h5>
+            </div>
+            <div class="modal-body">
+                <p class="lead fs-6 text-center"><i class="fas fa-exclamation-triangle"></i> this action is
+                    irreversible!</p>
+                <div class="d-flex justify-content-evenly">
+                    <a href="/" class="btn btn-success"><i class="far fa-check-circle"></i> Yes</a>
+                    <button type="button" class="btn btn-danger" data-mdb-dismiss="modal"><i
+                            class="far fa-times-circle"></i> No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js"
+    integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    const title = `<%= locals.article.title %>`;
+    const quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                [{ 'header': [1, 2, false] }],
+                ['bold', 'italic', 'underline',],
+                ['blockquote', 'formula'],
+                [{ 'script': 'sub' }, { 'script': 'super' }],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                ['clean']
+            ]
+        },
+    });
+
+    document.querySelector('#submit-btn').addEventListener('click', () => {
+        const content = quill.root.innerHTML;
+        if (content.length > 0) {
+            try {
+                axios.post(`/article/${title}/update`, {
+                    content
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            alert('The content cannot be empty.');
+        }
+    });
+</script>

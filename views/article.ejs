@@ -5,17 +5,23 @@
                 <%= locals.article.title %>
             </h1>
         </header>
-        <address>
-            <small class="lead">By <% locals.article.contributors.forEach(contributor=> { %>
-                    <a href="/user/<%= contributor.username %>" class="link-secondary" rel="author">
-                        <%= contributor.name %>,
-                    </a>
-                    <% }); %>
-                        &#8226; <time>
-                            <%= locals.article.created_at.getDate() + '/' + (locals.article.created_at.getMonth() + 1)
-                                + '/' + locals.article.created_at.getFullYear() %>
-                        </time></small>
-        </address>
+        <div class="d-flex justify-content-between align-items-center">
+            <address class="m-0">
+                <small class="lead">By <% locals.article.contributors.forEach((contributor, index)=> { %>
+                        <a href="/user/<%= contributor.username %>" class="link-secondary" rel="author">
+                            <%= contributor.name %><% if (index !==locals.article.contributors.length - 1) { %>, <% } %>
+                        </a>
+                        <% }); %>
+                            &#8226; <time>
+                                <%= locals.article.created_at.getDate() + '/' + (locals.article.created_at.getMonth() +
+                                    1) + '/' + locals.article.created_at.getFullYear() %>
+                            </time></small>
+            </address>
+            <% if (locals.isLoggedIn) { %>
+                <a href="/article/<%= locals.article.title %>/edit" class="btn btn-outline-secondary"><i
+                        class="fas fa-edit"></i> Edit Article</a>
+                <% } %>
+        </div>
         <hr />
         <section>
             <%- locals.article.content %>

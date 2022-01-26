@@ -27,6 +27,10 @@ const articleSchema = mongoose.Schema({
         minlength: 2,
         maxlength: 30000,
     },
+    topic: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Topic'
+    },
     contributors: [subSchema],
     created_at: {
         type: Date,

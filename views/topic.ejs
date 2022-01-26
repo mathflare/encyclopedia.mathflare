@@ -1,7 +1,10 @@
 <div class="container mb-3">
     <h1 class="display-1">
-        <%= locals.topic %> topic
+        <i class="<%= topic.icon %>"></i> <%= locals.topic.title %> topic
     </h1>
+    <i class="lead">
+        <strong>:</strong><%= locals.topic.description %>
+    </i>
     <hr />
-    <p class="lead">Related articles:</p>
+    <h2 class="display-7">Related Articles</h2>
 </div>

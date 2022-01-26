@@ -41,10 +41,6 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    articles: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Article',
-    }],
     created_at: {
         type: Date,
         default: Date.now,

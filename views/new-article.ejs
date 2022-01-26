@@ -1,15 +1,26 @@
 <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
 <div class="my-3 px-3">
     <h1 class="display-6"><i class="fas fa-file-alt"></i> New Article</h1>
-    <div class="d-flex justify-content-between mt-4">
-        <div class="form-outline">
-            <input type="text" id="new-article-title" class="form-control w-100" />
-            <label class="form-label" for="new-article-title">Title</label>
+    <div class="d-flex flex-column flex-lg-row justify-content-between mt-4">
+        <div class="d-flex flex-row">
+            <div class="form-outline" style="margin-right: 1em; min-width: 50vw;" data-mdb-toggle="tooltip"
+                data-mdb-placement="right" title="use _ or - instead of spaces">
+                <input type="text" id="new-article-title" class="form-control w-100" />
+                <label class="form-label" for="new-article-title">Title</label>
+            </div>
+            <select class="form-select" id="new-article-topic">
+                <option value="" selected>Select a Topic</option>
+                <% locals.topics.forEach(topic=> { %>
+                    <option value="<%= topic._id %>">
+                        <%= topic.title %>
+                    </option>
+                    <% }) %>
+            </select>
         </div>
-        <div>
+        <div class="flex-shrink-1 mt-lg-0 mt-4 align-self-end">
             <button class="btn btn-success" id="submit-btn"><i class="far fa-check-circle"></i> Publish</button>
-            <a href="/" class="btn btn-danger" id="submit-btn" data-mdb-toggle="tooltip"
-                title="Warning! This action is irreversible"><i class="far fa-times-circle"></i> Discard</a>
+            <button class="btn btn-danger" data-mdb-toggle="modal" data-mdb-target="#discardModal"><i
+                    class="far fa-times-circle"></i> Discard</button>
         </div>
     </div>
 </div>
@@ -17,6 +28,25 @@
     <p>Hello World!</p>
     <p>you can now <strong>start</strong> <u>writing</u> your <i>article</i>.</p>
     <p>Feel free to <span style="color: blue">style</span> your text accordingly.</p>
+</div>
+
+<div class="modal fade" id="discardModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to discard your work?</h5>
+            </div>
+            <div class="modal-body">
+                <p class="lead fs-6 text-center"><i class="fas fa-exclamation-triangle"></i> this action is
+                    irreversible!</p>
+                <div class="d-flex justify-content-evenly">
+                    <a href="/" class="btn btn-success"><i class="far fa-check-circle"></i> Yes</a>
+                    <button type="button" class="btn btn-danger" data-mdb-dismiss="modal"><i
+                            class="far fa-times-circle"></i> No</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
@@ -39,16 +69,28 @@
         },
     });
 
+    document.querySelector('#new-article-title').addEventListener('input', () => {
+        document.querySelector('#new-article-title').value = document.querySelector('#new-article-title').value.replace(/\s/g, '_');
+    });
+
     document.querySelector('#submit-btn').addEventListener('click', () => {
         const title = document.querySelector('#new-article-title').value;
+        const topic = document.querySelector('#new-article-topic').value;
         const content = quill.root.innerHTML;
-        try {
-            axios.post('/article/new', {
-                title,
-                content
-            });
-        } catch (error) {
-            console.log(error);
+        if (title.length > 0 && content.length > 0 && topic.length > 0) {
+            try {
+                axios.post('/article/new', {
+                    title,
+                    topic,
+                    content
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            if (title.length === 0) document.querySelector('#new-article-title').classList.add('is-invalid');
+            if (topic.length === 0) document.querySelector('#new-article-topic').classList.add('is-invalid');
+            alert('The title, topic or content cannot be empty.');
         }
     });
 </script>
